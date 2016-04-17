@@ -1,0 +1,60 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> JavaScript各类高度与宽度属性及方法 · gaochen</title><meta name="description" content="JavaScript各类高度与宽度属性及方法 - gaochen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li><li class="nav-list-item"><a href="https://github.com/gaochen" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">JavaScript各类高度与宽度属性及方法</h1><div class="post-time">Mar 30, 2016</div><div class="post-content"><p>JavaScript提供了很多获取不同对象高度和宽度的属性及方法，由于使用的比较少，导致用的时候需要反复查看API，效率很低。所以这篇文章就是对这些高度和宽度的属性及方法做一个比较全面的归纳与总结，加深我自己对这些概念的理解。</p>
+<h2 id="一、window对象"><a href="#一、window对象" class="headerlink" title="一、window对象"></a>一、window对象</h2><h3 id="1-1-window-innerWidth-innerHeight"><a href="#1-1-window-innerWidth-innerHeight" class="headerlink" title="1.1 window.innerWidth/innerHeight"></a>1.1 window.innerWidth/innerHeight</h3><p>概述：浏览器视口宽度/高度，如果存在滚动条则包括它。该属性被任一window对象支持，如window、frame、frameset</p>
+<p>兼容性：IE9+及其他主流浏览器</p>
+<p>兼容IE6-8：</p>
+<a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//若无滚动条，两个值相等</span></span><br><span class="line"><span class="built_in">window</span>.innerWidth || <span class="built_in">document</span>.documentElement.clientWidth</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-window-outerWidth-outerHeight"><a href="#1-2-window-outerWidth-outerHeight" class="headerlink" title="1.2 window.outerWidth/outerHeight"></a>1.2 window.outerWidth/outerHeight</h3><p>概述：整个浏览器窗口的宽高，包含浏览器的外边框</p>
+<p>兼容性：IE9+及其他主流浏览器</p>
+<h3 id="1-3-window-scrollX-scrollY"><a href="#1-3-window-scrollX-scrollY" class="headerlink" title="1.3 window.scrollX/scrollY"></a>1.3 window.scrollX/scrollY</h3><p>概述：返回文档在水平/垂直方向已滚动的像素值</p>
+<p>备注：pageXOffset和pageYOffset属性是scrollX和scrollY属性的别名，为了跨浏览器兼容性，请使用前面2个属性</p>
+<h3 id="1-4-window-pageXoffset-pageYOffset"><a href="#1-4-window-pageXoffset-pageYOffset" class="headerlink" title="1.4 window.pageXoffset/pageYOffset"></a>1.4 window.pageXoffset/pageYOffset</h3><p>概述：是scrollX/scrollY的别名，推荐使用这两个属性</p>
+<p>兼容性：IE9+及其他主流浏览器</p>
+<p>IE9以下兼容代码： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = (<span class="built_in">window</span>.pageXOffset !== <span class="literal">undefined</span>) ? <span class="built_in">window</span>.pageXOffset : (<span class="built_in">document</span>.documentElement</span><br><span class="line">        || <span class="built_in">document</span>.body.parentNode || <span class="built_in">document</span>.body).scrollLeft;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> y = (<span class="built_in">window</span>.pageYOffset !== <span class="literal">undefined</span>) ? <span class="built_in">window</span>.pageYOffset : (<span class="built_in">document</span>.documentElement</span><br><span class="line">        || <span class="built_in">document</span>.body.parentNode || <span class="built_in">document</span>.body).scrollTop;</span><br></pre></td></tr></table></figure>
+<h3 id="1-5-window-screenX-screenY"><a href="#1-5-window-screenX-screenY" class="headerlink" title="1.5 window.screenX/screenY"></a>1.5 window.screenX/screenY</h3><p>概述：返回浏览器窗口相对于屏幕左侧和顶部的垂直距离</p>
+<blockquote>
+<p>IE9+返回浏览器的<strong>外</strong>边缘距离屏幕边缘的距离<br>chrome返回浏览器的外边缘距离屏幕边缘的距离，同screenLeft和screenTop相等</p>
+</blockquote>
+<p>兼容性：IE9+、chrome、firefox、opera</p>
+<h3 id="1-6-window-screenLeft-screenTop"><a href="#1-6-window-screenLeft-screenTop" class="headerlink" title="1.6 window.screenLeft/screenTop"></a>1.6 window.screenLeft/screenTop</h3><p>概述：返回浏览器窗口相对于屏幕左侧和顶部的垂直距离</p>
+<blockquote>
+<p>IE6+返回浏览器的<strong>内</strong>边缘距离屏幕边缘的距离，因此比screenX/screenY的值大<br>chrome返回浏览器的外边缘距离屏幕边缘的距离，同screenLeft和screenTop相等</p>
+</blockquote>
+<p>兼容性：IE6+、chrome、opera。Firefox没有screenLeft和screenTop属性</p>
+<h2 id="二、screen对象"><a href="#二、screen对象" class="headerlink" title="二、screen对象"></a>二、screen对象</h2><h3 id="2-1-screen-width-height"><a href="#2-1-screen-width-height" class="headerlink" title="2.1 screen.width/height"></a>2.1 screen.width/height</h3><p>概述：返回屏幕的宽度和高度，就是指的屏幕的分辨率(单位：像素)</p>
+<p>兼容性：IE6+及其他主流浏览器</p>
+<h3 id="2-2-screen-availWidth-availHeight"><a href="#2-2-screen-availWidth-availHeight" class="headerlink" title="2.2 screen.availWidth/availHeight"></a>2.2 screen.availWidth/availHeight</h3><p>概述：屏幕的可用宽度和高度(通常与屏幕的宽度和高度一致)</p>
+<p>兼容性：IE6+及其他主流浏览器</p>
+<h2 id="三、Element"><a href="#三、Element" class="headerlink" title="三、Element"></a>三、Element</h2><p>以CSS2.1规定的盒模型为例，即box-sizing:content-box;</p>
+<h3 id="3-1-Element-clientWidth-element-clientHeight"><a href="#3-1-Element-clientWidth-element-clientHeight" class="headerlink" title="3.1 Element.clientWidth/element.clientHeight"></a>3.1 Element.clientWidth/element.clientHeight</h3><p>概述：表示元素的内部宽度和高度。该属性包括内边距，但不包括滚动条、边框和外边距</p>
+<p>计算方式：</p>
+<blockquote>
+<p>有滚动条时：clientWidth = 元素左内边距宽度 + 元素宽度 + 元素右内边距宽度 - 元素垂直滚动条宽度<br>无滚动条时：clientWidth = 元素左内边距宽度 + 元素宽度 + 元素右内边距宽度</p>
+</blockquote>
+<p>利用该特性则可以计算出滚动条的宽度</p>
+<p>兼容性：IE6+及其他主流浏览器 </p>
+<h3 id="3-2-Element-clientLeft-element-clientTop"><a href="#3-2-Element-clientLeft-element-clientTop" class="headerlink" title="3.2 Element.clientLeft/element.clientTop"></a>3.2 Element.clientLeft/element.clientTop</h3><p>概述：返回元素左边框和上边框的宽度，及border-left-width和border-right-width</p>
+<p>兼容性：IE6+及其他主流浏览器</p>
+<h3 id="3-3-HTMLElement-offsetWidth-offsetHeight"><a href="#3-3-HTMLElement-offsetWidth-offsetHeight" class="headerlink" title="3.3 HTMLElement.offsetWidth/offsetHeight"></a>3.3 HTMLElement.offsetWidth/offsetHeight</h3><p>概述：返回元素的布局宽度和高度。</p>
+<p>计算方式：</p>
+<blockquote>
+<p>offsetWidth = 元素的左边框宽度 + 元素左内边距宽度 + 元素宽度 + 元素右内边距宽度 + 元素的右边框宽度</p>
+</blockquote>
+<p>兼容性：IE6+及其主流浏览器</p>
+<h3 id="3-4-HTMLElement-offsetLeft-offsetTop"><a href="#3-4-HTMLElement-offsetLeft-offsetTop" class="headerlink" title="3.4 HTMLElement.offsetLeft/offsetTop"></a>3.4 HTMLElement.offsetLeft/offsetTop</h3><p>概述：返回当前元素相对于最近的定位祖先元素(offsetParent)的偏移距离</p>
+<p>计算方式：offsetLeft = offsetParent的左内边距 + 当前元素的margin-left + 当前元素的left</p>
+<p>兼容性：IE6+及其主流浏览器</p>
+<h3 id="3-5-Element-scrollWidth-scrollHeight"><a href="#3-5-Element-scrollWidth-scrollHeight" class="headerlink" title="3.5 Element.scrollWidth/scrollHeight"></a>3.5 Element.scrollWidth/scrollHeight</h3><p>概述：若元素无滚动条，scrollWidth/scrollHeight的值等于clientLeft/clientTop；当元素内部有滚动内容时，scrollWidth/scrollHeight的值大于clientLeft/scrollHeight</p>
+<p>计算方式：</p>
+<blockquote>
+<p>有滚动内容时：clientHeight = 元素左内边距宽度 + 元素宽度 + 元素右内边距宽度 + 滚动内容高度(height + padding*2)<br>无滚动内容时：clientHeight = 元素左内边距宽度 + 元素宽度 + 元素右内边距宽度</p>
+</blockquote>
+<p>兼容性：IE6+及其主流浏览器</p>
+<h3 id="3-6-Element-scrollLeft-scrollTop"><a href="#3-6-Element-scrollLeft-scrollTop" class="headerlink" title="3.6 Element.scrollLeft/scrollTop"></a>3.6 Element.scrollLeft/scrollTop</h3><p>概述：返回水平、垂直滚动条滚动的距离</p>
+<p>兼容性：IE6+及其主流浏览器</p>
+<blockquote>
+<p>参考文章：<a href="http://caibaojian.com/js-name.html" target="_blank" rel="external">http://caibaojian.com/js-name.html</a></p>
+<p>参考文档：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/API/Element</a></p>
+</blockquote>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/04/08/20160408/" class="prev">PREV</a><a href="/2016/03/25/20160325/" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2016 <a href="http://yoursite.com">gaochen</a>, unless otherwise noted.</p></div></footer><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?a36e15d9e2adec9a21fcdd9f686b1ed2";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>

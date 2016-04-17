@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>gaochen</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2016-04-17T13:31:10.317Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>gaochen</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于移动页面特效</title>
+    <link href="http://yoursite.com/2016/04/12/20160412/"/>
+    <id>http://yoursite.com/2016/04/12/20160412/</id>
+    <published>2016-04-12T09:39:42.000Z</published>
+    <updated>2016-04-17T13:31:10.317Z</updated>
+    
+    <content type="html">&lt;p&gt;最近看了腾讯ISUX的一篇文章，&lt;a href=&quot;http://isux.tencent.com/play-with-html5-animate.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;玩转HTML5移动页面(动效篇)&lt;/a&gt;，我有一篇CSS3练习就是以他们的页面动画来写的，看了这篇文章之后我对移动端的动画又有了更深的理解和追求，他们那种精益求精，对动画细节深挖的态度确实是一名优秀前端必须具备的。&lt;/p&gt;
+&lt;p&gt;本文主要是我动手实践两个东西，轻量级的视差引擎Parallax.js和SVG路径描边动画效果。&lt;/p&gt;
+&lt;h3 id=&quot;Parallax-sj&quot;&gt;&lt;a href=&quot;#Parallax-sj&quot; class=&quot;headerlink&quot; title=&quot;Parallax.sj&quot;&gt;&lt;/a&gt;Parallax.sj&lt;/h3&gt;&lt;p&gt;下载地址：&lt;a href=&quot;http://www.jq22.com/jquery-info178&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;轻量级的视差引擎Parallax.js&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;用法简单，定义一个parallax-obj的父类，把需要动的元素加上layer的类，然后设置动的范围data-depth：&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;parallax-obj&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;layer&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;data-depth&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;0.00&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;layer6.png&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;layer&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;data-depth&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;0.20&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;layer5.png&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;layer&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;data-depth&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;0.40&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;layer4.png&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;layer&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;data-depth&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;0.60&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;layer3.png&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;layer&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;data-depth&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;0.80&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;layer2.png&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;layer&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;data-depth&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;1.00&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;layer1.png&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;视差场景，请选择您的父DOM元素，并把它传递给视差的构造函数。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; obj = &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.getElementById(&lt;span class=&quot;string&quot;&gt;&#39;parallax-obj&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; parallax = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Parallax(obj);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//或者调整参数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; parallax = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Parallax(scene, &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    calibrateX: &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    calibrateY: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    invertX: &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    invertY: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    limitX: &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    limitY: &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    scalarX: &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    scalarY: &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    frictionX: &lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    frictionY: &lt;span class=&quot;number&quot;&gt;0.8&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;简单Demo：&lt;a href=&quot;http://gaochen.github.io/demo/20160412-1.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;点击这里&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;SVG路径描边动画效果&quot;&gt;&lt;a href=&quot;#SVG路径描边动画效果&quot; class=&quot;headerlink&quot; title=&quot;SVG路径描边动画效果&quot;&gt;&lt;/a&gt;SVG路径描边动画效果&lt;/h3&gt;&lt;p&gt;基础知识：SVG Stroke属性&lt;/p&gt;
+&lt;p&gt;stroke：定义一条线，文本或元素轮廓颜色&lt;/p&gt;
+&lt;p&gt;stroke-width：定义一条线，文本或元素轮廓厚度&lt;/p&gt;
+&lt;p&gt;stroke-linecap：定义不同类型的开放路径的终结，值有：butt，round，square，inherit&lt;/p&gt;
+&lt;p&gt;stroke-linejoin：表示描边转角的表现方式，值有：miter，round，bevel，inherit&lt;/p&gt;
+&lt;p&gt;stroke-dasharray：表示虚线描边，值有：none，&lt;dasharray&gt;，inherit，&lt;dasharray&gt;即表示虚线之间的分隔距离&lt;/dasharray&gt;&lt;/dasharray&gt;&lt;/p&gt;
+&lt;p&gt;stroke-dashoffset：表示虚线的起始偏移，值有：&lt;percentage&gt;，&lt;length&gt;，inherit，分别表示百分比值，长度值，继承&lt;/length&gt;&lt;/percentage&gt;&lt;/p&gt;
+&lt;p&gt;动画效果主要用到的是stroke-dasharray和stroke-dashoffset&lt;/p&gt;
+&lt;p&gt;描边动画核心代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;path&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;stroke-dasharray&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;stroke-dashoffset&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;animation&lt;/span&gt;: dash &lt;span class=&quot;number&quot;&gt;5s&lt;/span&gt; linear infinite;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@&lt;span class=&quot;keyword&quot;&gt;keyframes&lt;/span&gt; dash &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;selector-tag&quot;&gt;to&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attribute&quot;&gt;stroke-dashoffset&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;分析：&lt;/p&gt;
+&lt;p&gt;dasharray值为1000可以随意调整，只要比整个描边动画的总长度大即可，若值越大，描边速度即越快。&lt;/p&gt;
+&lt;p&gt;dashoffset值大于描边动画总长度，则整个描边路径开始会被隐藏，通过CSS3 animation属性的支持，定义5秒动画，dashoffset从1000到0，则描边动画完成。&lt;/p&gt;
+&lt;p&gt;简单Demo：&lt;a href=&quot;http://gaochen.github.io/demo/20160412-2.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;点击这里&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考文章：&lt;a href=&quot;http://www.zhangxinxu.com/wordpress/2014/04/animateion-line-drawing-svg-path-%E5%8A%A8%E7%94%BB-%E8%B7%AF%E5%BE%84/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.zhangxinxu.com/wordpress/2014/04/animateion-line-drawing-svg-path-%E5%8A%A8%E7%94%BB-%E8%B7%AF%E5%BE%84/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近看了腾讯ISUX的一篇文章，&lt;a href=&quot;http://isux.tencent.com/play-with-html5-animate.html&quot;&gt;玩转HTML5移动页面(动效篇)&lt;/a&gt;，我有一篇CSS3练习就是以他们的页面动画来写的，看了这篇文章之后我对移动端的动画又有了更深的理解和追求，他们那种精益求精，对动画细节深挖的态度确实是一名优秀前端必须具备的。&lt;/p&gt;
+&lt;p&gt;本文主要是我动手实践两个东西，轻量级的视差引擎Parallax.js和SVG路径描边动画效果。&lt;/p&gt;
+&lt;h3 id=&quot;Parallax-sj&quot;&gt;&lt;a href=&quot;#Parallax-sj&quot; class=&quot;headerlink&quot; title=&quot;Parallax.sj&quot;&gt;&lt;/a&gt;Parallax.sj&lt;/h3&gt;&lt;p&gt;下载地址：&lt;a href=&quot;http://www.jq22.com/jquery-info178&quot;&gt;轻量级的视差引擎Parallax.js&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;用法简单，定义一个parallax-obj的父类，把需要动的元素加上layer的类，然后设置动的范围data-depth：&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>页面内滚动布局总结</title>
+    <link href="http://yoursite.com/2016/04/08/20160408/"/>
+    <id>http://yoursite.com/2016/04/08/20160408/</id>
+    <published>2016-04-08T07:24:35.000Z</published>
+    <updated>2016-04-17T13:31:10.317Z</updated>
+    
+    <content type="html">&lt;p&gt;相对于传统的页面来说，“内滚动布局”就是主滚动条在页面内部的布局。一般这种布局多用于管理系统界面。&lt;/p&gt;
+&lt;p&gt;先上Demo:&lt;a href=&quot;http://gaochen.github.io/demo/20160408.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;点击这里&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Demo中的知识点：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; 全屏拉伸&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;.page &amp;#123;position: absolute; top: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; right: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; bottom: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; left: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//等同于&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;.page &amp;#123;position: absolute; top: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; left: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; width: &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;%; height: &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;%;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在移动端布局中，当页面有一个固定的头部或者底部时，强烈推荐上面这种自适应的布局方法，后面关于移动端布局的文章将会详细讲解。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;strong&gt;2.&lt;/strong&gt; 主体内容要在都在content里面，关键在于overflow:auto&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;.content &amp;#123;position: absolute; top: &lt;span class=&quot;number&quot;&gt;62&lt;/span&gt;px; right: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; bottom: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; left: &lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;px; overflow: auto;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;3.&lt;/strong&gt; :root选择器匹配文档根元素，在HTML中，根元素始终是html元素&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4.&lt;/strong&gt; IE8及以下兼容RGBA半透明背景色&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#AARRGGBB,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;endColorStr=i#AARRGGBB)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;startColorStr：可选项。字符串(String)。设置或检索色彩渐变的开始颜色和透明度。&lt;br&gt;其格式为 #AARRGGBB 。 AA 、 RR 、 GG 、 BB 为十六进制正整数。取值范围为 00 – FF 。&lt;br&gt;RR指定红色值， GG 指定绿色值， BB 指定蓝色值，参阅 #RRGGBB 颜色单位。 AA 指定透明度。00是完全透明。FF是完全不透明。超出取值范围的值将被恢复为默认值。&lt;br&gt;取值范围为 #FF000000 – #FFFFFFFF 。默认值为 #FF0000FF 。不透明蓝色。&lt;/p&gt;
+&lt;p&gt;EndColorStr:可选项。字符串(String)。设置或检索色彩渐变的结束颜色和透明度。参阅 startColorStr 属性。默认值为 #FF000000 。不透明黑色。&lt;/p&gt;
+&lt;p&gt;demo中的代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//实现弹出层内容区超高时可以滚动&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;div class=&quot;mask&quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;div class=&quot;dialog&quot;&amp;gt;返回请刷新页面&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//弹出层背景透明&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;background:rgba(0,0,0,0.5);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;endcolorstr=#7F000000);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;5.&lt;/strong&gt; 滚动容器不在是window，而是.content；若实现页面中的表头固定效果，当计算最大滚动高度时，需要把网站头部的高度考虑进去&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&quot;.content&quot;&lt;/span&gt;).scroll(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// ...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//最大滚动高度值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; maxScrollTop = $(&lt;span class=&quot;string&quot;&gt;&quot;#tableHeader&quot;&lt;/span&gt;).offset().top - $(&lt;span class=&quot;string&quot;&gt;&quot;.header&quot;&lt;/span&gt;).height();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考文章：&lt;a href=&quot;http://isux.tencent.com/inner-scroll-layout.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://isux.tencent.com/inner-scroll-layout.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;相对于传统的页面来说，“内滚动布局”就是主滚动条在页面内部的布局。一般这种布局多用于管理系统界面。&lt;/p&gt;
+&lt;p&gt;先上Demo:&lt;a href=&quot;http://gaochen.github.io/demo/20160408.html&quot;&gt;点击这里&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Demo中的知识点：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; 全屏拉伸&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;.page &amp;#123;position: absolute; top: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; right: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; bottom: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; left: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//等同于&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;.page &amp;#123;position: absolute; top: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; left: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; width: &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;%; height: &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;%;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在移动端布局中，当页面有一个固定的头部或者底部时，强烈推荐上面这种自适应的布局方法，后面关于移动端布局的文章将会详细讲解。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript各类高度与宽度属性及方法</title>
+    <link href="http://yoursite.com/2016/03/30/20160331/"/>
+    <id>http://yoursite.com/2016/03/30/20160331/</id>
+    <published>2016-03-30T08:44:14.000Z</published>
+    <updated>2016-04-17T13:31:10.317Z</updated>
+    
+    <content type="html">&lt;p&gt;JavaScript提供了很多获取不同对象高度和宽度的属性及方法，由于使用的比较少，导致用的时候需要反复查看API，效率很低。所以这篇文章就是对这些高度和宽度的属性及方法做一个比较全面的归纳与总结，加深我自己对这些概念的理解。&lt;/p&gt;
+&lt;h2 id=&quot;一、window对象&quot;&gt;&lt;a href=&quot;#一、window对象&quot; class=&quot;headerlink&quot; title=&quot;一、window对象&quot;&gt;&lt;/a&gt;一、window对象&lt;/h2&gt;&lt;h3 id=&quot;1-1-window-innerWidth-innerHeight&quot;&gt;&lt;a href=&quot;#1-1-window-innerWidth-innerHeight&quot; class=&quot;headerlink&quot; title=&quot;1.1 window.innerWidth/innerHeight&quot;&gt;&lt;/a&gt;1.1 window.innerWidth/innerHeight&lt;/h3&gt;&lt;p&gt;概述：浏览器视口宽度/高度，如果存在滚动条则包括它。该属性被任一window对象支持，如window、frame、frameset&lt;/p&gt;
+&lt;p&gt;兼容性：IE9+及其他主流浏览器&lt;/p&gt;
+&lt;p&gt;兼容IE6-8：&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//若无滚动条，两个值相等&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.innerWidth || &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.documentElement.clientWidth&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;1-2-window-outerWidth-outerHeight&quot;&gt;&lt;a href=&quot;#1-2-window-outerWidth-outerHeight&quot; class=&quot;headerlink&quot; title=&quot;1.2 window.outerWidth/outerHeight&quot;&gt;&lt;/a&gt;1.2 window.outerWidth/outerHeight&lt;/h3&gt;&lt;p&gt;概述：整个浏览器窗口的宽高，包含浏览器的外边框&lt;/p&gt;
+&lt;p&gt;兼容性：IE9+及其他主流浏览器&lt;/p&gt;
+&lt;h3 id=&quot;1-3-window-scrollX-scrollY&quot;&gt;&lt;a href=&quot;#1-3-window-scrollX-scrollY&quot; class=&quot;headerlink&quot; title=&quot;1.3 window.scrollX/scrollY&quot;&gt;&lt;/a&gt;1.3 window.scrollX/scrollY&lt;/h3&gt;&lt;p&gt;概述：返回文档在水平/垂直方向已滚动的像素值&lt;/p&gt;
+&lt;p&gt;备注：pageXOffset和pageYOffset属性是scrollX和scrollY属性的别名，为了跨浏览器兼容性，请使用前面2个属性&lt;/p&gt;
+&lt;h3 id=&quot;1-4-window-pageXoffset-pageYOffset&quot;&gt;&lt;a href=&quot;#1-4-window-pageXoffset-pageYOffset&quot; class=&quot;headerlink&quot; title=&quot;1.4 window.pageXoffset/pageYOffset&quot;&gt;&lt;/a&gt;1.4 window.pageXoffset/pageYOffset&lt;/h3&gt;&lt;p&gt;概述：是scrollX/scrollY的别名，推荐使用这两个属性&lt;/p&gt;
+&lt;p&gt;兼容性：IE9+及其他主流浏览器&lt;/p&gt;
+&lt;p&gt;IE9以下兼容代码： &lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; x = (&lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.pageXOffset !== &lt;span class=&quot;literal&quot;&gt;undefined&lt;/span&gt;) ? &lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.pageXOffset : (&lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.documentElement&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        || &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.body.parentNode || &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.body).scrollLeft;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; y = (&lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.pageYOffset !== &lt;span class=&quot;literal&quot;&gt;undefined&lt;/span&gt;) ? &lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.pageYOffset : (&lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.documentElement&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        || &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.body.parentNode || &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.body).scrollTop;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;1-5-window-screenX-screenY&quot;&gt;&lt;a href=&quot;#1-5-window-screenX-screenY&quot; class=&quot;headerlink&quot; title=&quot;1.5 window.screenX/screenY&quot;&gt;&lt;/a&gt;1.5 window.screenX/screenY&lt;/h3&gt;&lt;p&gt;概述：返回浏览器窗口相对于屏幕左侧和顶部的垂直距离&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;IE9+返回浏览器的&lt;strong&gt;外&lt;/strong&gt;边缘距离屏幕边缘的距离&lt;br&gt;chrome返回浏览器的外边缘距离屏幕边缘的距离，同screenLeft和screenTop相等&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;兼容性：IE9+、chrome、firefox、opera&lt;/p&gt;
+&lt;h3 id=&quot;1-6-window-screenLeft-screenTop&quot;&gt;&lt;a href=&quot;#1-6-window-screenLeft-screenTop&quot; class=&quot;headerlink&quot; title=&quot;1.6 window.screenLeft/screenTop&quot;&gt;&lt;/a&gt;1.6 window.screenLeft/screenTop&lt;/h3&gt;&lt;p&gt;概述：返回浏览器窗口相对于屏幕左侧和顶部的垂直距离&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;IE6+返回浏览器的&lt;strong&gt;内&lt;/strong&gt;边缘距离屏幕边缘的距离，因此比screenX/screenY的值大&lt;br&gt;chrome返回浏览器的外边缘距离屏幕边缘的距离，同screenLeft和screenTop相等&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;兼容性：IE6+、chrome、opera。Firefox没有screenLeft和screenTop属性&lt;/p&gt;
+&lt;h2 id=&quot;二、screen对象&quot;&gt;&lt;a href=&quot;#二、screen对象&quot; class=&quot;headerlink&quot; title=&quot;二、screen对象&quot;&gt;&lt;/a&gt;二、screen对象&lt;/h2&gt;&lt;h3 id=&quot;2-1-screen-width-height&quot;&gt;&lt;a href=&quot;#2-1-screen-width-height&quot; class=&quot;headerlink&quot; title=&quot;2.1 screen.width/height&quot;&gt;&lt;/a&gt;2.1 screen.width/height&lt;/h3&gt;&lt;p&gt;概述：返回屏幕的宽度和高度，就是指的屏幕的分辨率(单位：像素)&lt;/p&gt;
+&lt;p&gt;兼容性：IE6+及其他主流浏览器&lt;/p&gt;
+&lt;h3 id=&quot;2-2-screen-availWidth-availHeight&quot;&gt;&lt;a href=&quot;#2-2-screen-availWidth-availHeight&quot; class=&quot;headerlink&quot; title=&quot;2.2 screen.availWidth/availHeight&quot;&gt;&lt;/a&gt;2.2 screen.availWidth/availHeight&lt;/h3&gt;&lt;p&gt;概述：屏幕的可用宽度和高度(通常与屏幕的宽度和高度一致)&lt;/p&gt;
+&lt;p&gt;兼容性：IE6+及其他主流浏览器&lt;/p&gt;
+&lt;h2 id=&quot;三、Element&quot;&gt;&lt;a href=&quot;#三、Element&quot; class=&quot;headerlink&quot; title=&quot;三、Element&quot;&gt;&lt;/a&gt;三、Element&lt;/h2&gt;&lt;p&gt;以CSS2.1规定的盒模型为例，即box-sizing:content-box;&lt;/p&gt;
+&lt;h3 id=&quot;3-1-Element-clientWidth-element-clientHeight&quot;&gt;&lt;a href=&quot;#3-1-Element-clientWidth-element-clientHeight&quot; class=&quot;headerlink&quot; title=&quot;3.1 Element.clientWidth/element.clientHeight&quot;&gt;&lt;/a&gt;3.1 Element.clientWidth/element.clientHeight&lt;/h3&gt;&lt;p&gt;概述：表示元素的内部宽度和高度。该属性包括内边距，但不包括滚动条、边框和外边距&lt;/p&gt;
+&lt;p&gt;计算方式：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;有滚动条时：clientWidth = 元素左内边距宽度 + 元素宽度 + 元素右内边距宽度 - 元素垂直滚动条宽度&lt;br&gt;无滚动条时：clientWidth = 元素左内边距宽度 + 元素宽度 + 元素右内边距宽度&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;利用该特性则可以计算出滚动条的宽度&lt;/p&gt;
+&lt;p&gt;兼容性：IE6+及其他主流浏览器 &lt;/p&gt;
+&lt;h3 id=&quot;3-2-Element-clientLeft-element-clientTop&quot;&gt;&lt;a href=&quot;#3-2-Element-clientLeft-element-clientTop&quot; class=&quot;headerlink&quot; title=&quot;3.2 Element.clientLeft/element.clientTop&quot;&gt;&lt;/a&gt;3.2 Element.clientLeft/element.clientTop&lt;/h3&gt;&lt;p&gt;概述：返回元素左边框和上边框的宽度，及border-left-width和border-right-width&lt;/p&gt;
+&lt;p&gt;兼容性：IE6+及其他主流浏览器&lt;/p&gt;
+&lt;h3 id=&quot;3-3-HTMLElement-offsetWidth-offsetHeight&quot;&gt;&lt;a href=&quot;#3-3-HTMLElement-offsetWidth-offsetHeight&quot; class=&quot;headerlink&quot; title=&quot;3.3 HTMLElement.offsetWidth/offsetHeight&quot;&gt;&lt;/a&gt;3.3 HTMLElement.offsetWidth/offsetHeight&lt;/h3&gt;&lt;p&gt;概述：返回元素的布局宽度和高度。&lt;/p&gt;
+&lt;p&gt;计算方式：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;offsetWidth = 元素的左边框宽度 + 元素左内边距宽度 + 元素宽度 + 元素右内边距宽度 + 元素的右边框宽度&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;兼容性：IE6+及其主流浏览器&lt;/p&gt;
+&lt;h3 id=&quot;3-4-HTMLElement-offsetLeft-offsetTop&quot;&gt;&lt;a href=&quot;#3-4-HTMLElement-offsetLeft-offsetTop&quot; class=&quot;headerlink&quot; title=&quot;3.4 HTMLElement.offsetLeft/offsetTop&quot;&gt;&lt;/a&gt;3.4 HTMLElement.offsetLeft/offsetTop&lt;/h3&gt;&lt;p&gt;概述：返回当前元素相对于最近的定位祖先元素(offsetParent)的偏移距离&lt;/p&gt;
+&lt;p&gt;计算方式：offsetLeft = offsetParent的左内边距 + 当前元素的margin-left + 当前元素的left&lt;/p&gt;
+&lt;p&gt;兼容性：IE6+及其主流浏览器&lt;/p&gt;
+&lt;h3 id=&quot;3-5-Element-scrollWidth-scrollHeight&quot;&gt;&lt;a href=&quot;#3-5-Element-scrollWidth-scrollHeight&quot; class=&quot;headerlink&quot; title=&quot;3.5 Element.scrollWidth/scrollHeight&quot;&gt;&lt;/a&gt;3.5 Element.scrollWidth/scrollHeight&lt;/h3&gt;&lt;p&gt;概述：若元素无滚动条，scrollWidth/scrollHeight的值等于clientLeft/clientTop；当元素内部有滚动内容时，scrollWidth/scrollHeight的值大于clientLeft/scrollHeight&lt;/p&gt;
+&lt;p&gt;计算方式：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;有滚动内容时：clientHeight = 元素左内边距宽度 + 元素宽度 + 元素右内边距宽度 + 滚动内容高度(height + padding*2)&lt;br&gt;无滚动内容时：clientHeight = 元素左内边距宽度 + 元素宽度 + 元素右内边距宽度&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;兼容性：IE6+及其主流浏览器&lt;/p&gt;
+&lt;h3 id=&quot;3-6-Element-scrollLeft-scrollTop&quot;&gt;&lt;a href=&quot;#3-6-Element-scrollLeft-scrollTop&quot; class=&quot;headerlink&quot; title=&quot;3.6 Element.scrollLeft/scrollTop&quot;&gt;&lt;/a&gt;3.6 Element.scrollLeft/scrollTop&lt;/h3&gt;&lt;p&gt;概述：返回水平、垂直滚动条滚动的距离&lt;/p&gt;
+&lt;p&gt;兼容性：IE6+及其主流浏览器&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考文章：&lt;a href=&quot;http://caibaojian.com/js-name.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://caibaojian.com/js-name.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考文档：&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/API/Element&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developer.mozilla.org/zh-CN/docs/Web/API/Element&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JavaScript提供了很多获取不同对象高度和宽度的属性及方法，由于使用的比较少，导致用的时候需要反复查看API，效率很低。所以这篇文章就是对这些高度和宽度的属性及方法做一个比较全面的归纳与总结，加深我自己对这些概念的理解。&lt;/p&gt;
+&lt;h2 id=&quot;一、window对象&quot;&gt;&lt;a href=&quot;#一、window对象&quot; class=&quot;headerlink&quot; title=&quot;一、window对象&quot;&gt;&lt;/a&gt;一、window对象&lt;/h2&gt;&lt;h3 id=&quot;1-1-window-innerWidth-innerHeight&quot;&gt;&lt;a href=&quot;#1-1-window-innerWidth-innerHeight&quot; class=&quot;headerlink&quot; title=&quot;1.1 window.innerWidth/innerHeight&quot;&gt;&lt;/a&gt;1.1 window.innerWidth/innerHeight&lt;/h3&gt;&lt;p&gt;概述：浏览器视口宽度/高度，如果存在滚动条则包括它。该属性被任一window对象支持，如window、frame、frameset&lt;/p&gt;
+&lt;p&gt;兼容性：IE9+及其他主流浏览器&lt;/p&gt;
+&lt;p&gt;兼容IE6-8：&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>How To Build The Blog</title>
+    <link href="http://yoursite.com/2016/03/25/20160325/"/>
+    <id>http://yoursite.com/2016/03/25/20160325/</id>
+    <published>2016-03-25T05:14:43.000Z</published>
+    <updated>2016-04-17T15:06:04.348Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
