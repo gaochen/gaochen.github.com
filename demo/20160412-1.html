@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>parallax.js</title>
+	<style type="text/css">
+		* {
+			padding: 0; margin:0;
+		}
+		#ul {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			background-color: gray;
+			list-style: none;
+		}
+		
+		.li1 {
+			margin-left: 100px;
+		}
+		.li2 {
+			margin-left: 10%;
+			margin-top: 20%;;
+		}
+		.li3 {
+			margin-left: 80%;;
+			margin-top: 30%;;
+		}
+		.li4 {
+			margin-left: 30%;;
+			margin-top: 10%;;
+		}
+		.li5 {
+			margin-left: 50%;;
+			margin-top: 40%;;
+		}
+		.li6 {
+			margin-left: 60%;;
+			margin-top: 20%;;
+		}
+
+	</style>
+</head>
+
+<body>
+	<ul id="ul">
+		<li class="layer li1" data-depth="0.10"><img src="image/luo.jpg"></li>
+		<li class="layer li2" data-depth="0.20"><img src="image/luo.jpg"></li>
+		<li class="layer li3" data-depth="0.40"><img src="image/luo.jpg"></li>
+		<li class="layer li4" data-depth="0.60"><img src="image/luo.jpg"></li>
+		<li class="layer li5" data-depth="0.80"><img src="image/luo.jpg"></li>
+		<li class="layer li6" data-depth="1.00"><img src="image/luo.jpg"></li>
+	</ul>
+
+
+	<script type="text/javascript" src="script/parallax.min.js"></script>
+	<script type="text/javascript">
+		var oUl = document.getElementById("ul")
+		var parallax = new Parallax(oUl);
+	</script> 
+</body>
+</html>

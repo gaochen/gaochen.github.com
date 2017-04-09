@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>margin负值</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+
+    <style type="text/css">
+        body {
+            height: 1000px;
+        }
+        /* 两列固定，中间自适应 */
+        .main {
+            width: 100%;
+            float: left;
+        }
+        .center {
+            height: 400px;
+            margin: 0 200px;
+            background-color: #2da5ee;
+        }
+        .left {
+            width: 200px;
+            height: 400px;
+            float: left;
+            margin-left: -100%;
+            background-color: #da4c3c;
+        }
+        .right {
+            width: 200px;
+            height: 400px;
+            margin-left: -200px;
+            background-color: #da4c3c;
+            float: left;
+        }  
+
+        /* li去除最右margin值 */
+        #div1 {
+            width: 320px;
+            height: 320px;
+            background-color: #cccccc;
+            margin: 50px;
+        }
+        #div1 ul {
+            margin-right: -10px;
+        }
+        #div1 ul li {
+            width: 100px;
+            height: 100px;
+            background-color: #2da5ee;
+            line-height: 100px;
+            font-size: 30px;
+            text-align: center;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* 垂直居中 */
+        #div2 {
+            width:200px;
+            height:200px;
+            background:#F60;
+            position:absolute;
+            left:50%;
+            top:50%;
+            margin-left:-100px;
+            margin-top:-100px;
+        }
+
+        /* li列表boder-bottom去重 */
+        #div3 {
+            width: 400px;
+            height: auto;
+            margin: 50px;
+        }
+        #div3 ul {
+            width: 400px;
+            border: 1px solid #2da5ee;
+        }
+        #div3 ul li {
+            width: 400px;
+            height: 30px;
+            line-height: 30px;
+            border-bottom: 1px solid #2da5ee;
+            margin-bottom: -1px;   /* 关键代码 */
+        }
+
+        /* 多列等高 */
+        #div4 {
+            overflow:hidden;
+            width:600px;
+            margin:50px auto;
+        }
+        #div4 div{
+            margin-bottom:-200px;
+            padding-bottom:200px;
+        }
+        .div4_L {
+            float:left;
+            width:200px;
+            height: 50px;
+            background:#2da5ee;
+        }
+        .div4_C {
+            float:left;
+            width:200px;
+            height: 100px;
+            background:#da4c3c;
+        }
+        .div4_R {
+            float:right;
+            width:200px;
+            height: 200px;
+            background:#2da5ee;
+        }
+        #div4 p {color:#FFF;text-align:center}
+    </style>
+
+</head>
+
+<body>
+    <!-- 两列固定，中间自适应 -->
+    <div class="container clearfix">
+        <div class="main">
+            <div class="center">中间--两列固定，中间自适应</div>
+        </div>
+        <div class="left">左侧</div>
+        <div class="right">右侧</div>
+    </div>
+
+    <!-- li去除最右margin值 -->
+    <div id="div1">
+        <ul class="clearfix">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+        </ul>
+    </div>
+
+    <!-- 垂直居中 -->
+    <div id="div2">相对于body始终垂直居中</div>
+
+    <!-- li列表boder-bottom去重 -->
+    <div id="div3">
+        <ul class="clearfix">
+            <li>1 li列表boder-bottom去重</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+
+    <!-- 多列等高 -->
+    <div id="div4">
+        <div class="div4_L">
+            <p>style="height:50px"</p>
+        </div>
+        <div class="div4_C">
+            <p>style="height:100px" <br /> 多列等高</p>
+        </div>
+        <div class="div4_R">
+            <p>style="height:200px"</p>
+        </div>
+    </div>
+</body>
+</html>

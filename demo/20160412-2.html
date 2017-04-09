@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>1.4--path</title>
+
+	<style type="text/css">
+	path {
+		stroke-dasharray:1000;
+		stroke-dashoffset:1000;
+		-webkit-animation:dash 5s linear forwards 1;
+		animation:dash 5s linear forwards 1;
+	}
+
+	@-webkit-keyframes dash {
+		to {
+			stroke-dashoffset:0;
+		}
+	}
+	@keyframes dash {
+		to {
+			stroke-dashoffset:0;
+		}
+	}
+	</style>
+
+</head>
+
+<body>
+	<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="500">
+		<path d="M250 50C20 10 20 390 250 300" stroke="#000000" style="stroke-width: 3px;" stroke-dasharray="null" stoke-linejoin="null" fill="none"></path>
+		<path d="M450 50C300 50 300 175 450 175S600 300 450 300" stroke="#000000" style="stroke-width: 3px;" stroke-dasharray="null" stoke-linejoin="null" fill="none"></path>
+		<path d="M500 50L800 300" stroke="#000000" style="stroke-width: 3px;" stroke-dasharray="null" stoke-linejoin="null"></path>
+	</svg>
+
+</body>
+</html>

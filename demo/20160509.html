@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>：before和：after</title>
+    <style type="text/css">
+        body {
+            background-color: #f2f2f2;
+        }
+        .simple {
+            text-align: center;
+            font-size: 24px;
+            line-height: 24px;
+            color: #2da5ee;
+            margin: 40px auto;
+        }
+        .simple:before {
+            content: "元素内容之前的文字";
+            color: red;
+        }
+
+        .simple:after {
+            content: "元素内容之后的文字";
+            color: red;
+        }
+
+        #yin-yang {
+            width: 96px;
+            height: 48px;
+            background: #eee;
+            border-color: red;
+            border-style: solid;
+            border-width: 2px 2px 50px 2px;
+            border-radius: 100%;
+            position: relative;
+            margin: 40px auto;
+        }
+
+        #yin-yang:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            background: #eee;
+            border: 18px solid red;
+            border-radius: 100%;
+            width: 12px;
+            height: 12px;
+        }
+
+        #yin-yang:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background: red;
+            border: 18px solid #eee;
+            border-radius:100%;
+            width: 12px;
+            height: 12px;
+        }
+
+
+        a {
+            width: auto;
+            position: relative;
+            display: inline-block;
+            outline: none;
+            text-decoration: none;
+            color: #000;
+            font-size: 32px;
+            margin-left: 300px;
+        }
+
+        a:before {
+            position: absolute;
+            content: "\5B"; 
+            -webkit-transition: all .35s ease-in-out;
+            left: -10px;
+            opacity: 0;
+        }
+        a:after {
+            position: absolute;
+            content: "\5D"; 
+            -webkit-transition: all .35s ease-in-out;
+            right: -10px;
+            opacity: 0;
+        }
+
+        a:hover::before {
+            left: -25px;
+            opacity: 1;
+        }
+        a:hover::after {
+            right: -25px;
+            opacity: 1;
+        }
+
+        .box {
+            width: 300px;
+            height: 120px;
+            background-color: #fff;
+            margin: 40px auto;
+            text-align: center;
+            font-size: 24px;
+            line-height: 120px;
+        }
+        .effect1 {
+            position: relative;
+        }
+        .effect1:before, .effect1:after {
+            z-index: -1;
+            position: absolute;
+            content: "";
+            bottom: 15px;
+            left: 10px;
+            width: 50%;
+            top: 80%;
+            max-width: 300px;
+            background: #666;
+            box-shadow: 0 15px 10px #666;
+            transform: rotate(-4deg);
+        }
+        .effect1:after {
+            transform: rotate(4deg);
+            right: 10px;
+            left: auto;
+        }
+
+        .effect2 {
+            position: relative;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        }
+        .effect2:before, .effect2:after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+            top: 10px;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            border-radius: 100px / 10px;
+        }
+        .effect2:after {
+            right: 10px;
+            left: auto;
+            transform: skew(8deg) rotate(3deg);
+        }
+    </style>
+
+</head>
+    
+<body>
+    <!-- 基本用法 -->
+    <p class="simple">这是元素的内容。</p>
+	
+    <!-- 阴阳图 -->
+    <div id="yin-yang"></div>
+
+
+    <!-- hover特效 -->
+    <a href="#">hover括号特效</a>
+
+    <!-- 阴影特效 -->
+    <div class="box effect1">
+        阴影1
+    </div>
+    <div class="box effect2">
+        阴影2
+    </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>内滚动</title>
+	
+	<style type="text/css">
+		.page {position: absolute; top: 0; left: 0; right: 0; bottom: 0;}
+		.header {position: absolute; top: 0; left: 0; height: 62px; right: 0; background-color:#2da5ee; }
+		.side {position: absolute; top: 62px; left: 0; width: 200px; bottom: 0; background: gray; z-index: 10;}
+		.content {position: absolute; top: 62px; right: 0; bottom: 0; left: 200px; overflow: auto;}
+		.table {width: 100%; height: 1200px;}
+		.tableHeader {width: 100%;padding-left: 200px; height: 40px; line-height: 40px; position: fixed; top: 62px; left: 0; border-bottom: 1px solid #ccc; background-color: #fff; box-shadow: 0 1px 5px #ccc; }
+		.clickMe {width: auto; height: 20px; margin-top: 200px; display: block;}
+		.mask {width: 100%; position:absolute; top: 0; left: 0; bottom: 0; background: rgba(0,0,0,0.5); display: none; z-index: 11; overflow: auto; filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000,endcolorstr=#7F000000);}
+		:root .mask {filter:none;}
+		.dialog {width: 60%; height: 1000px; margin:0 auto; background-color: #fff; margin-top: 300px;}
+	</style>
+
+
+</head>
+
+<body>
+	<div class="page">
+		<div class="header">这是头部</div>
+		<div class="side">这是侧边栏</div>
+		<div class="content">
+			<div class="table">
+				<div class="tableHeader">这是表头</div>
+				<a href="#" class="clickMe">点击我</a>
+				<a href="#" class="clickMe">点击我</a>
+				<a href="#" class="clickMe">点击我</a>
+				<a href="#" class="clickMe">点击我</a>
+				<a href="#" class="clickMe">点击我</a>
+				<a href="#" class="clickMe">点击我</a>
+				<a href="#" class="clickMe">点击我</a>
+			</div>
+	
+		</div>
+		<div class="mask">
+			<div class="dialog">返回请刷新页面</div>
+		</div>
+	</div>
+
+	<script>
+		window.onload = function() {
+			var aA = getByClass(document,"clickMe"),
+				oMask = getByClass(document,"mask")[0],
+				len = aA.length;
+
+			for (var i=0; i<len; i++) {
+				aA[i].onclick = function() {
+					oMask.style.display = "block";
+				}
+			}
+
+		}
+
+
+		function getByClass(oParent,className) {
+          	var child = oParent.getElementsByTagName("*");
+          	var length = child.length;
+          	var arr = [];
+          	for(var i=0; i<length; i++) {
+              	if(child[i].className == className) {
+                  	arr.push(child[i]);
+              	}
+          	}
+          	return arr;
+      	}
+	</script>
+</body>
+</html>
