@@ -1,0 +1,42 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 移动端布局 · gaochen</title><meta name="description" content="移动端布局 - gaochen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li><li class="nav-list-item"><a href="https://github.com/gaochen" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">移动端布局</h1><div class="post-time">Feb 13, 2017</div><div class="post-content"><p>接触移动端开发快1年了，这期间做了点餐下单系统，微信公众号，Hybrid App等项目。对于首次接触移动端开发的人来说，最先关注的一定是移动端设备和传统PC设备的区别，以及在多样化移动端设备上如何做到一套页面的自适应。</p>
+<a id="more"></a>
+<h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><p><strong>viewport</strong>：</p>
+<p>手机浏览器是把页面放在一个虚拟的“窗口”中来显示，这个虚拟的“窗口”就是viewport，简单来说就是网页的可视区域，通常情况下viewport比手机可视区域（屏幕）宽，这就会导致正常的PC端页面在移动端设备上显示会出现横向滚动条。</p>
+<p>ppk大神把移动设备上的viewport分为layout viewport  、 visual viewport   和 ideal viewport  三类，其中的ideal viewport是最适合移动设备的viewport，ideal viewport的宽度等于移动设备的屏幕宽度，只要在css中把某一元素的宽度设为ideal viewport的宽度(单位用px)，那么这个元素的宽度就是设备屏幕的宽度了，也就是宽度为100%的效果。ideal viewport 的意义在于，无论在何种分辨率的屏幕下，那些针对ideal viewport 而设计的网站，不需要用户手动缩放，也不需要出现横向滚动条，都可以完美的呈现给用户。</p>
+<p><strong>设备独立像素</strong>：</p>
+<p>设备独立像素也称为密度无关像素，可以认为是计算机坐标系统中的一个点，这个点代表一个可以由程序使用的虚拟像素(比如说CSS像素)，并且可以通过相关系统转换为物理像素。</p>
+<p><strong>CSS pixels</strong>：</p>
+<p>浏览器使用的抽象单位， 主要用来精确度量Web页面上的内容。一般情况之下，CSS像素称为与设备无关的像素(device-independent pixel)，简称DIPs。</p>
+<p><strong>device pixels</strong>： </p>
+<p>设备像素（物理像素），他是显示设备中一个最微小的物理部件。每个像素可以根据操作系统设置自己的颜色和亮度。</p>
+<p><strong>PPI/DPI</strong>：</p>
+<p>PPI，有时也叫DPI，所表示的是每英寸所拥有的像素（pixel）数目，数值越高，即代表显示屏能够以越高的密度显示图像。（注：这里的像素，指的是device pixels）</p>
+<p><strong>设备像素比(device pixel ratio)</strong>：</p>
+<p>设备物理像素和设备独立像素的比例，也就是 设备像素比 = 物理像素 / 独立像素。由此可知，在不同的屏幕上，CSS像素所呈现的物理尺寸是一致的，而不同的是CSS像素所对应的物理像素具数是不一致的。在普通屏幕下1个CSS像素对应1个物理像素，而在Retina屏幕下，1个CSS像素对应的却是4个物理像素。</p>
+<h2 id="解决两个问题"><a href="#解决两个问题" class="headerlink" title="解决两个问题"></a>解决两个问题</h2><p>由上文可知，移动端开发在布局上会遇到2个问题：</p>
+<ol>
+<li><p>移动设备上默认的viewport不等于屏幕的宽度</p>
+</li>
+<li><p>不同设备上的设备像素比不同，需要兼容屏幕适配Layout</p>
+</li>
+</ol>
+<p><strong>利用meta标签对viewport进行控制</strong>：</p>
+<p>在开发移动端页面的时候，head标签中最常见的代码如下，该meta标签的作用是让当前viewport的宽度等于设备的宽度，同时不允许用户手动缩放。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, </span><br><span class="line">initial-scale=1.0, maximum-scale=1.0, user-scalable=0"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>其实width=device-width和initial-scale=1都能把viewport宽度变成ideal viewport，但这两者各有一个小缺陷，就是iphone、ipad以及IE 会横竖屏不分，通通以竖屏的ideal viewport宽度为准。所以，最完美的写法应该是，两者都写上去，这样就 initial-scale=1 解决了 iphone、ipad的毛病，width=device-width则解决了IE的毛病。</p>
+<p><strong>利用lib-flexible来实现终端适配</strong>：</p>
+<p>lib-flexible是一个制作H5适配的开源库。它的使用方法非常的简单，只需要在Web页面的head标签中添加对应的flexible_css.js、flexible.js文件。</p>
+<p>另外强烈建议对JS做内联处理，在所有资源加载之前执行这个JS。执行这个JS后，会在html标签元素上增加一个data-dpr属性，以及一个font-size样式。JS会根据不同的设备添加不同的data-dpr值，比如说2或者3，同时会给html加上对应的font-size的值，比如说75px。</p>
+<p>如此一来，页面中的元素，都可以通过rem单位来设置。他们会根据html元素的font-size值做相应的计算，从而实现屏幕的适配效果。</p>
+<p>flexible实际上就是能过JS来动态改写meta标签，代码类似这样：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> metaEl = doc.createElement(<span class="string">'meta'</span>);</span><br><span class="line"><span class="keyword">var</span> scale = isRetina ? <span class="number">0.5</span>:<span class="number">1</span>;</span><br><span class="line">metaEl.setAttribute(<span class="string">'name'</span>, <span class="string">'viewport'</span>);</span><br><span class="line">metaEl.setAttribute(<span class="string">'content'</span>, <span class="string">'initial-scale='</span> + scale + <span class="string">', maximum-scale='</span> + scale + <span class="string">', minimum-scale='</span> + scale + <span class="string">', user-scalable=no'</span>);</span><br><span class="line"><span class="keyword">if</span> (docEl.firstElementChild) &#123;</span><br><span class="line">    <span class="built_in">document</span>.documentElement.firstElementChild.appendChild(metaEl);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> wrap = doc.createElement(<span class="string">'div'</span>);</span><br><span class="line">    wrap.appendChild(metaEl);</span><br><span class="line">    documen.write(wrap.innerHTML);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>总共做了三件事：</p>
+<ol>
+<li>动态改写meta标签</li>
+<li>给html标签元素添加data-dpr属性，并且动态改写data-dpr的值</li>
+<li>给html标签元素添加font-size属性，并且动态改写font-size的值</li>
+</ol>
+<blockquote>
+<p>参考文章：<a href="http://www.cnblogs.com/2050/p/3877280.html" target="_blank" rel="external">http://www.cnblogs.com/2050/p/3877280.html</a></p>
+<p>参考文章：<a href="https://github.com/amfe/article/issues/17" target="_blank" rel="external">https://github.com/amfe/article/issues/17</a></p>
+<p>参考文章：<a href="http://www.cnblogs.com/xiaohuochai/p/5494624.html" target="_blank" rel="external">http://www.cnblogs.com/xiaohuochai/p/5494624.html</a></p>
+</blockquote>
+</div></article></div></section><footer><div class="paginator"><a href="/2017/02/17/20170217/" class="prev">PREV</a><a href="/2017/02/10/20170210/" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2017 <a href="http://yoursite.com">gaochen</a>, unless otherwise noted.</p></div></footer><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "//hm.baidu.com/hm.js?a36e15d9e2adec9a21fcdd9f686b1ed2";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
